@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <style>
+  
+  footer {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  position: relative;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in;
+}
+
+footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #f0f0f0;
+    }
+
+   nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white; /* White bar */
+  padding: 10px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+
+
+    .nav-left {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav img.logo {
+      height: 40px;
+    }
+
+    nav a {
+  color: black; /* Black text for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav .logout {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+    .hero-section {
+  background-image: url('/images/home-bg.jpg');
+  height: 100vh;
+  background-attachment: fixed; /* Parallax effect */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  color: white;
+  background-color: rgba(0,0,0,0.3); /* Slight dark overlay */
+  padding: 30px;
+  border-radius: 10px;
+}
+
+
+.animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: white;
+  color: #111;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #111;
+  color: white;
+}
+
+    .about-section-cards {
+  background-color: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.about-heading {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.about-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about-card {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.about-card h3 {
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.about-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Dancing/tilt effect */
+.tilt-left {
+  transform: rotate(-3deg);
+}
+
+.tilt-center {
+  transform: rotate(0deg);
+}
+
+.tilt-right {
+  transform: rotate(3deg);
+}
+
+.about-card:hover {
+  transform: scale(1.05) rotate(0deg);
+}
+
+    .services-section {
+      padding: 60px 30px;
+      background: #f8f8f8;
+      text-align: center;
+    }
+
+    .services-section h2 {
+      margin-bottom: 30px;
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .slider {
+      display: flex;
+      gap: 20px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      min-width: 250px;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .card button {
+      background-color: #111;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .slide-btn {
+      background: #333;
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .career-section {
+  background-image: url('/images/career-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 150px 30px 180px; /* Increased top and bottom padding */
+  position: relative;
+  min-height: 80vh; /* Optional: ensure vertical height */
+}
+
+
+.career-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+  z-index: 0;
+}
+
+.career-banner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.career-banner h2 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.career-banner p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.career-btn {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.career-btn:hover {
+  background: #eee;
+}
+
+.client-section {
+  padding: 80px 30px;
+  background: #fff;
+  text-align: center;
+}
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.client-logo {
+  width: 100px;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+/* Staggered animation delay */
+.client-logo:nth-child(1) { animation-delay: 0s; }
+.client-logo:nth-child(2) { animation-delay: 0.2s; }
+.client-logo:nth-child(3) { animation-delay: 0.4s; }
+.client-logo:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.client-description {
+  max-width: 800px;
+  margin: 40px auto 60px;
+  text-align: center;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.visit-section {
+  background: linear-gradient(to bottom right, #f7fafd, #e9eff5);
+  padding: 80px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.visit-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.visit-heading {
+  font-size: 2.5rem;
+  color: #002d5e;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.visit-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.info-container {
+  flex: 1;
+  min-width: 250px;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  line-height: 1.8;
+}
+
+.info-container a {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.info-container a:hover {
+  text-decoration: underline;
+}
+.everify-section {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 50px 20px 0;
+}
+
+.everify-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.everify-logo {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.everify-text {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.footer-bar {
+  background-color: #0077d6;
+  color: white;
+  padding: 15px 0;
+  font-size: 0.95rem;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav>
+  <div class="nav-left">
+    <img src="/images/logo.jpg" alt="Logo" class="logo">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#career">Career</a>
+    <a href="#clients">Clients</a>
+    <a href="#visit">Visit Us</a>
+
+  </div>
+  <a href="/logout" class="logout">Logout</a>
+</nav>
+
+  <section class="hero-section">
+  <div class="hero-content">
+    <h1 class="animate">We Have Unique Focus In Delivering Solutions.</h1>
+    <p class="animate">Driven By A Passion For Perfection And A Commitment To Doing It Right.</p>
+    <a href="#about" class="cta-btn animate">FIND OUT MORE</a>
+  </div>
+</section>
+
+
+<section class="about-section-cards" id="about">
+  <h2 class="about-heading">We've got what you need!</h2>
+  <div class="about-cards-container">
+    <div class="about-card tilt-left">
+      <h3>Who are we?</h3>
+      <p>Singular Analysts Inc is a trusted software development and IT consulting company founded in 2012, offering customized, scalable, and cost-effective technology solutions.</p>
+    </div>
+    <div class="about-card tilt-center">
+      <h3>What makes us different?</h3>
+      <p>Our focus on innovation, long-term client partnerships, and tailored solutions sets us apart. We combine technical expertise with smart tools to drive real business results.</p>
+    </div>
+    <div class="about-card tilt-right">
+      <h3>What do we do?</h3>
+      <p>We provide end-to-end IT services including software development, consulting, staffing, and HRMS solutions—built using Agile, DevOps, and emerging technologies.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services-section">
+    <h2>Our Services</h2>
+    <div class="slider-container">
+      <button class="slide-btn" onclick="scrollServices(-1)">&#10094;</button>
+      <div class="slider" id="serviceSlider">
+        <div class="card">
+          <img src="/images/service/it-service.jpg" alt="IT Services">
+          <h3>IT Services</h3>
+          <p>We help you achieve the qualities in your IT strategy by providing you application development and management services.</p>
+        
+        </div>
+        <div class="card">
+          <img src="/images/service/staffing-service.jpg" alt="Staffing Services">
+          <h3>Staffing Services</h3>
+          <p>Permanency and commitment are attributes that not only people, but companies seek too. Providing permanent recruitment solutions.</p>
+         
+        </div>
+        <div class="card">
+          <img src="/images/service/direct-placement.jpg" alt="Direct Placements">
+          <h3>Direct Placements</h3>
+          <p>Connect with full-time professionals who have the skills and personalities to match your business goals and your culture.</p>
+          
+        </div>
+        <div class="card">
+          <img src="/images/service/quality-assurance.jpg" alt="Quality Assurance">
+          <h3>Quality Assurance</h3>
+          <p>We maintain a desired level of quality in our service or product, especially by means of attention to every stage of the process of delivery or production.</p>
+          
+        </div>
+      </div>
+      <button class="slide-btn" onclick="scrollServices(1)">&#10095;</button>
+    </div>
+  </section>
+  <section id="career" class="career-section">
+  <div class="career-banner">
+    <h2>Build Your Future with Us</h2>
+    <p>Explore opportunities to grow, lead, and make an impact.</p>
+    <a href="/career.html" class="career-btn">View Openings</a>
+  </div>
+</section>
+<section class="client-section" id="clients">
+  <h2>Our Clients</h2>
+  <div class="client-logos">
+    <img src="/images/client1.png" class="client-logo" alt="Client 1" />
+    <img src="/images/client2.png" class="client-logo" alt="Client 2" />
+    <img src="/images/client3.png" class="client-logo" alt="Client 3" />
+    <img src="/images/client4.png" class="client-logo" alt="Client 4" />
+  </div>
+  <div class="client-description">
+  <p>
+    We have the privilege of working with some of the most well known companies in the world and we don’t take this lightly.
+    Our clients engage us in a number of ways—we help them solve business problems, increase visibility and help them thrive in a networked world 
+    where customers and employees have become increasingly empowered. We view our clients as partners and work collaboratively with them 
+    to achieve results they can measure.
+  </p>
+</div>
+<section class="visit-section" id="visit">
+  <div class="visit-wrapper">
+    <h2 class="visit-heading">Visit Us</h2>
+    <div class="visit-content">
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps?q=17440+Dallas+Pkwy+%23250,+Dallas,+TX+75287&output=embed"
+          width="100%" 
+          height="300" 
+          style="border:0; border-radius: 12px;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="info-container">
+        <p><strong>Address:</strong><br>17440 Dallas Pkwy #250<br>Dallas, TX 75287<br>USA</p>
+        <p><strong>Phone:</strong> +1 614 371 4388</p>
+        <p><strong>Email:</strong> <a href="mailto:hr@singularanalysts.com">hr@singularanalysts.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="everify-section">
+  <div class="everify-container">
+    <img src="/images/e-verify.png" alt="E-Verify Logo" class="everify-logo" />
+    <p class="everify-text">
+      E-Verify® is a registered trademark of the U.S. Department of Homeland Security.
+    </p>
+  </div>
+  <footer id="site-footer">
+  &copy; 2025 Singular Analysts Inc. All rights reserved.
+</footer>
+</section>
+
+
+
+</section>
+
+  <script>
+  const slider = document.getElementById("serviceSlider");
+  const cards = slider.querySelectorAll('.card');
+  const cardCount = cards.length;
+  const cardWidth = cards[0].offsetWidth + 20;
+
+  // Clone cards to enable looping
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    slider.appendChild(clone);
+  });
+
+  let scrollAmount = 0;
+
+  function scrollServices(direction) {
+    scrollAmount += direction * cardWidth;
+    if (scrollAmount >= slider.scrollWidth / 2) scrollAmount = 0;
+    if (scrollAmount < 0) scrollAmount = slider.scrollWidth / 2 - cardWidth;
+    slider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  }
+  
+</script>
+<script>
+  const footer = document.getElementById('site-footer');
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          footer.classList.add('visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1
+    }
+  );
+
+  observer.observe(footer);
+</script>
+
+</body>
+</html>
